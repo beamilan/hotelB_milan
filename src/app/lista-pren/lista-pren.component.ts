@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Booking } from '../booking.model';
 
 @Component({
   selector: 'app-lista-pren',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lista-pren.component.css']
 })
 export class ListaPrenComponent implements OnInit {
-
+   @Input() b : Booking[];
   constructor() { }
 
   ngOnInit() {

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { RoomList } from './roomLsit.model';
 import { Room } from './room.model';
 import { Booking } from './booking.model';
+import {HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -15,10 +17,12 @@ export class AppComponent {
   rooms = RoomList;
   selectedRoom: Room = RoomList[0];
   bookingList : Booking[];
+  booking : Observable<Booking[]>;
 
-  constructor() { }
+
+  constructor(public http: HttpClient) {}
   ngOnInit() {
-    this.bookingList = new Array<Booking>();
+    this.booking = this.http.get<Booking[]>('https://my-json-server.typicode.com/malizia-g/hotel/booking');;
   }
 
   //Controllo se l'id della stanza selezionata è nell'elenco.
